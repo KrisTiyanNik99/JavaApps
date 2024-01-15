@@ -30,6 +30,7 @@ public class Main {
 
         //Syzdavam redovete i slagam artikuli v nego chrez medoda "toTableRow", koito suzdadohme v NewTest
         model.addRow(new NewTest("Laptop", 1, 950.90).toTableRow());
+        //addRow metoda raboti s Object arr, zatova nie v nashiq klas NewTest suzdadohme mnogo vajniq metod "toTableRow" koito parsva vsichko koeto ni trqbva kato Object arr
         model.addRow(new NewTest("Telephone", 1, 500).toTableRow());
         model.addRow(new NewTest("Klimatik", 0,450.55).toTableRow());
         model.addRow(new NewTest(nameColum+" for servers", 1, 3000).toTableRow());
@@ -64,7 +65,6 @@ public class Main {
         table.getTableHeader().setForeground(new Color(255,255,255));
         table.setSelectionBackground(new Color(232,57,95));
         JScrollPane ne = new JScrollPane(table);
-
 
         //dobavqm table kym jfreima
         frame.add(ne);

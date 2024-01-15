@@ -42,7 +42,8 @@ public class NewTest {
     }
 
     public Object[] toTableRow(){
-        // Izkluchitelno vajen metod koito ni trqbva za da mojem da vurnem Object arr, koito da moje da izpolzvame v Jtable
+        // Izkluchitelno vajen metod koito zaduljinelno ni trqbva za da mojem da vurnem Object arr(moje i da ne e object, no e silno preporuchitelno)
+        // ideqta e da moje da go izpolzvame v Jtable
         return new Object[]{
                 this, name, kolichesto, cena //za da suzdadem row v jtable ot rozi klass s dadenite harakteristiki nie trqbva da gi vurnem kato Object array
         };
