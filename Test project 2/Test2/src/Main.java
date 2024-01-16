@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import java.awt.*;
 
 public class Main {
@@ -24,6 +25,12 @@ public class Main {
         model.addColumn("Name");
         model.addColumn("Quantity");
         model.addColumn("Price");
+        model.addColumn("Bober"); //dobavqme edna ekstra kolana za test kak mojem da q iztriem
+
+        //Suzdavame TableColum s column modela na table i vzimame indexa na kolonata koqto iskame da mahnem
+        TableColumn col = table.getColumnModel().getColumn(4); //s metoda getColumn(index) vzimame kolonata koqto iskame
+        table.removeColumn(col); //sled koeto izpolzvame promenlivata "col" za da premahnem s metoda na table- removeColumn, TableColumn koito sme izbrali
+        //pravim go zashtoto removeColum raboti s TableColumn, poradi koeto ni trqbva da suzdadem promenliva ot tip TableColumn za da mojem da q mahnem
 
         //zadavam na koq kolonka iskam da se priloji kustom kolonkata s jspinnera
         table.getColumnModel().getColumn(2).setCellEditor(new UpSellEditor());
