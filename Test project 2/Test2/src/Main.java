@@ -5,9 +5,6 @@ import javax.swing.table.TableColumn;
 import java.awt.*;
 
 public class Main {
-
-    static JTable table;
-
     public static void main(String[] args) {
 
         //Syzdavam jframe i mu zadavam osnovnite harakteristiki
@@ -15,9 +12,9 @@ public class Main {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(980, 680);
 
-        table = new JTable();
-        //Slagame default table model za da raboti
-        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        //Slagame default table model i suzdavame table za da raboti
+        DefaultTableModel model = new DefaultTableModel();
+        JTable table = new JTable(model);
 
         //Suzdavame koloninkite i tehnite imena za test
         String nameColum = "ID";
@@ -72,10 +69,54 @@ public class Main {
         table.getTableHeader().setForeground(new Color(255,255,255));
         table.setSelectionBackground(new Color(232,57,95));
         JScrollPane ne = new JScrollPane(table);
+        //slagame na scrollpane za da znae jpanela kude da go pozicionira
+        ne.setBounds(40, 20, 600, 200);
+
+        //test buton s cel printirane za debug
+        JButton print = new JButton("Buba butonche");
+        print.setBackground(Color.PINK);
+        print.addActionListener(e -> {
+            table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+            //slagame setRowSelectionAllowed na true zashtot inache ne mojem da izbirame kolonite
+            table.setRowSelectionAllowed(true);
+            //izbira vsichki redove ot purviq do posledniq
+            table.setRowSelectionInterval(0, table.getRowCount() - 1);
+            getSelectedRowValues(table);
+        });
+        print.setBounds(280, 80, 200, 100);
+
+        //suzdavame Jpanel v koito shte si durjim elementite
+        JPanel first = new JPanel();
+        first.setPreferredSize(new Dimension(490, 340));
+        first.setBackground(Color.BLACK);
+        first.setLayout(null);
+        first.add(ne);
+
+        //suzdavame i vtori jpanel koito da durjim butona
+        JPanel second = new JPanel();
+        second.setPreferredSize(new Dimension(490,340));
+        second.setBackground(Color.yellow);
+        second.setLayout(null);
+        second.add(print);
 
         //dobavqm table kym jfreima
-        frame.add(ne);
+        frame.setLayout(new BorderLayout());
         frame.setResizable(false);
         frame.setVisible(true);
+        frame.add(first, BorderLayout.NORTH);
+        frame.add(second, BorderLayout.SOUTH);
+    }
+
+    //metod s koito shte printirame elementite ot redovete na suotvetnata kolona S CEL DEBUG
+    private static void getSelectedRowValues(JTable table){
+        int[] vals = table.getSelectedRows(); //tuk sa vsichki izbrani redove zaedno sys stoinostite koito imat
+        //obhojdame gi s for cikul za da mojem da preminem prez vseki red
+        for (int i = 0; i < vals.length; i++){
+            //chrez metoda table.getValueAt(nomera na reda, nomera na kolonata) vzimame stoinostta ot kolonata koqto iskame
+            System.out.println(table.getValueAt(i, 2));
+            System.out.println(table.getValueAt(i, 1));
+            System.out.println("Cenata na artikula " + table.getValueAt(i, 3));
+        }
+        System.out.println();
     }
 }
