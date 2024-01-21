@@ -8,6 +8,7 @@ public class NewTest {
     //Novi stoinosti za test
     private int maxKolichestvo;
     private double totalCena = 0;
+    private int fiksiranaStoinost;
 
     public NewTest() {
         this.name = "empty";
@@ -21,6 +22,7 @@ public class NewTest {
         this.kolichesto = kolichesto;
         this.cena = cena;
         this.maxKolichestvo = maxKolichestvo;
+        this.fiksiranaStoinost = maxKolichestvo;
     }
 
     public String getName() {
@@ -36,7 +38,12 @@ public class NewTest {
     }
 
     public void setKolichesto(int kolichesto) {
-        this.kolichesto = kolichesto;
+        if (kolichesto > fiksiranaStoinost) { //s tazi proverka kazvame ako kolichestvoto ot spinera koeto poluchavame e poveche ot maksimalnata broika
+            //ne mojem poveche da uvelichavame stoinostta na kolichestvoto
+            this.kolichesto = fiksiranaStoinost;
+        } else {
+            this.kolichesto = kolichesto;
+        }
     }
 
     public double getCena() {
@@ -48,17 +55,17 @@ public class NewTest {
     }
 
     public int getMaxKolichestvo() {
-        if (maxKolichestvo < 0){
+        if (maxKolichestvo < 0) {
             return maxKolichestvo = 0;
-        }else {
+        } else {
             return maxKolichestvo;
         }
     }
 
     public void setMaxKolichestvo(int maxKolichestvo) {
-        if (maxKolichestvo < 0){
+        if (maxKolichestvo < 0) {
             this.maxKolichestvo = 0;
-        }else {
+        } else {
             this.maxKolichestvo = maxKolichestvo;
         }
     }
@@ -73,10 +80,9 @@ public class NewTest {
 
     public Object[] toTableRow() {
         // Izkluchitelno vajen metod koito zaduljinelno ni trqbva za da mojem da vurnem Object arr(moje i da ne e object, no e silno preporuchitelno)
-        // ideqta e da moje da go izpolzvame v Jtable
-        String maksBroika = String.valueOf(maxKolichestvo);
         return new Object[]{
-                this, name, kolichesto, cena, maxKolichestvo, "$ " + totalCena //za da suzdadem row v jtable ot rozi klass s dadenite harakteristiki nie trqbva da gi vurnem kato Object array
+                this, name, kolichesto, cena, maxKolichestvo, "$ " + totalCena //za da suzdadem row v jtable ot rozi klass s dadenite harakteristiki
+                //vsichki stoinosti trqbva da gi vurnem kato Object array, zashtoto s nego e nai- bezopasno da se raboti
         };
     }
 }

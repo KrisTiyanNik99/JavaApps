@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import java.awt.*;
 
 public class Main {
@@ -29,6 +27,7 @@ public class Main {
 
         //zadavam na koq kolonka iskam da se priloji kustom kolonkata s jspinnera
         table.getColumnModel().getColumn(2).setCellEditor(new UpSellEditor());
+        //table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor());//---------------------------------------------------suzdai kolona koqto updeitva cenata
 
         //Syzdavam redovete i slagam artikuli v nego chrez medoda "toTableRow", koito suzdadohme v NewTest
         model.addRow(new NewTest("Laptop", 0, 950.90, 7).toTableRow());
@@ -50,10 +49,17 @@ public class Main {
         });
         //pravim cenata sushto da sedi v centura na kletkata
         table.getColumnModel().getColumn(3).setCellRenderer(new DefaultTableCellRenderer() {
+            private JTable table = new JTable();
+            private NewTest curr;
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 setHorizontalAlignment(SwingConstants.CENTER);
+                //s tozi blok ot kod vzimame stoinostta i q pravim taka che da se zapazva i promenq v samiq klas NewTest
+                this.table = table;
+                this.curr = (NewTest) table.getValueAt(row, 0);
+                double num = Double.parseDouble(value.toString());
+                curr.setCena(num);
                 return this;
             }
         });
@@ -111,9 +117,9 @@ public class Main {
         //obhojdame gi s for cikul za da mojem da preminem prez vseki red
         for (int i = 0; i < vals.length; i++) {
             //chrez metoda table.getValueAt(nomera na reda, nomera na kolonata) vzimame stoinostta ot kolonata koqto iskame
-            System.out.println("Totalna cena na artikula " + table.getValueAt(i, 5));
-            System.out.println(table.getValueAt(i, 2));
-            System.out.println(table.getValueAt(i, 1));
+            //System.out.println("Totalna cena na artikula " + table.getValueAt(i, 5));
+            //System.out.println("Jelano Kolichestvo ot producta " + table.getValueAt(i, 2));
+            //System.out.println(table.getValueAt(i, 1));
             System.out.println("Cenata na artikula " + table.getValueAt(i, 3));
             System.out.println();
         }

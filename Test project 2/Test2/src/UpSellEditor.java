@@ -1,7 +1,6 @@
 import javax.swing.*;
 import javax.swing.text.DefaultFormatter;
 import java.awt.*;
-import java.text.DecimalFormat;
 
 public class UpSellEditor extends DefaultCellEditor {
 
@@ -34,7 +33,7 @@ public class UpSellEditor extends DefaultCellEditor {
         //Setvame nashiq jtable da e kato Jtable v main metoda
         this.table = table;
         this.row = row; //slagame reda koito sme poluchili kato argument ot celleditora
-        this.currentItemSet = (NewTest) table.getValueAt(row, 0);
+        this.currentItemSet = (NewTest) table.getValueAt(row, 0);// zaduljitelno kolonata koqto sochi kum mqstoto na zapazenite obekti v pametta
         //S tozi i dolniq red pravim spinnera da zapazva na vsqka otdelna kletka zadadenata i stoinost(sama za sebe si)
         int quint = Integer.parseInt(value.toString()); //parsvame stoinostta kym int
         spinner.setValue(quint);
@@ -50,8 +49,17 @@ public class UpSellEditor extends DefaultCellEditor {
         int qynt = Integer.parseInt(spinner.getValue().toString());
         if (qynt != currentItemSet.getKolichesto()) { //Proverqvame dali kolichestvoto e razlichno promenqno
             currentItemSet.setKolichesto(qynt); //Tui kato sme v sluchq kogato sa razlichni kolichestvata, prosto gi oednakvqvame v tozi red
+
+            if (currentItemSet.getTotalCena() > (currentItemSet.getCena() * currentItemSet.getKolichesto())) { //pravim proverka dali obshtata suma e po- golqma ot kolichestvoto po cenata
+                //ako obshtata suma e po golqma ot kolichestvoto po cenata znachi broikata na maxvalue trqbva da porasne
+                currentItemSet.setMaxKolichestvo(currentItemSet.getMaxKolichestvo() + 1);
+            } else if (currentItemSet.getTotalCena() < (currentItemSet.getCena() * currentItemSet.getKolichesto())) {
+                //ako e po malka znachi trqbva maxvalue da namalee s edno
+                currentItemSet.setMaxKolichestvo(currentItemSet.getMaxKolichestvo() - 1);
+            }
+
+            //sled tova veche pri vsichki sluchai si smqtame cenata po kolichestvoto
             currentItemSet.setTotalCena(currentItemSet.getCena() * currentItemSet.getKolichesto()); //tuk setvame total cenata
-            currentItemSet.setMaxKolichestvo(currentItemSet.getMaxKolichestvo() - 1);//.....................................................................................
             table.setValueAt("$ " + currentItemSet.getTotalCena(), row, 5);
             table.setValueAt(currentItemSet.getMaxKolichestvo(), row, 4);
         }
