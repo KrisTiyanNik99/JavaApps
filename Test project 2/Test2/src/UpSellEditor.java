@@ -22,7 +22,7 @@ public class UpSellEditor extends DefaultCellEditor {
         formatter.setCommitsOnValidEdit(true);
         //zadavam parametri koito da centrirat stoinostta koqto se pokazva v jspinnera
         editor.getTextField().setHorizontalAlignment(SwingConstants.CENTER); //slaga stoinostta v centura samo kogato e w edit mode
-        //dobavqme metod koito shte promenq cenata i kolichestvoto na produktite
+        //dobavqme metod koito shte promenq cenata i kolichestvoto na produktite na samiq obekt ot dadeniq klas
         spinner.addChangeListener(e -> spinnerChange());
 
     }
@@ -48,20 +48,14 @@ public class UpSellEditor extends DefaultCellEditor {
     private void spinnerChange() {
         int qynt = Integer.parseInt(spinner.getValue().toString());
         if (qynt != currentItemSet.getKolichesto()) { //Proverqvame dali kolichestvoto e razlichno promenqno
-            currentItemSet.setKolichesto(qynt); //Tui kato sme v sluchq kogato sa razlichni kolichestvata, prosto gi oednakvqvame v tozi red
-
-            if (currentItemSet.getTotalCena() > (currentItemSet.getCena() * currentItemSet.getKolichesto())) { //pravim proverka dali obshtata suma e po- golqma ot kolichestvoto po cenata
-                //ako obshtata suma e po golqma ot kolichestvoto po cenata znachi broikata na maxvalue trqbva da porasne
-                currentItemSet.setMaxKolichestvo(currentItemSet.getMaxKolichestvo() + 1);
-            } else if (currentItemSet.getTotalCena() < (currentItemSet.getCena() * currentItemSet.getKolichesto())) {
-                //ako e po malka znachi trqbva maxvalue da namalee s edno
-                currentItemSet.setMaxKolichestvo(currentItemSet.getMaxKolichestvo() - 1);
-            }
-
+            //Tui kato sme v sluchq kogato sa razlichni stoinostite na spinera i kolichestvoto, prosto gi uednakvqvame v tozi red
+            currentItemSet.setKolichesto(qynt); //kolichestvoto obache ne moje da e poveche ot fiksiranata mu stoinost v klasa
+            //updatevame stoinostta na maxkolichestvo sprqmo tova kakvo e chisloto v spinera
+            currentItemSet.setMaxKolichestvo(currentItemSet.getFiksiranaStoinost() - qynt);
             //sled tova veche pri vsichki sluchai si smqtame cenata po kolichestvoto
             currentItemSet.setTotalCena(currentItemSet.getCena() * currentItemSet.getKolichesto()); //tuk setvame total cenata
-            table.setValueAt("$ " + currentItemSet.getTotalCena(), row, 5);
-            table.setValueAt(currentItemSet.getMaxKolichestvo(), row, 4);
+            table.setValueAt("$ " + currentItemSet.getTotalCena(), row, 6);
+            table.setValueAt(currentItemSet.getMaxKolichestvo(), row, 4); //tuk setvame maksimalnoto kolichestvo
         }
     }
 }

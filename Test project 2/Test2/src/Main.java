@@ -23,18 +23,18 @@ public class Main {
         model.addColumn("Quantity");
         model.addColumn("Price");
         model.addColumn("Max quantity");
+        model.addColumn("Total quantity");
         model.addColumn("Total Price");
 
         //zadavam na koq kolonka iskam da se priloji kustom kolonkata s jspinnera
         table.getColumnModel().getColumn(2).setCellEditor(new UpSellEditor());
-        //table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor());//---------------------------------------------------suzdai kolona koqto updeitva cenata
 
         //Syzdavam redovete i slagam artikuli v nego chrez medoda "toTableRow", koito suzdadohme v NewTest
-        model.addRow(new NewTest("Laptop", 0, 950.90, 7).toTableRow());
+        model.addRow(new NewTest("Laptop", 0, 100, 9).toTableRow());
         //addRow metoda raboti s Object arr, zatova nie v nashiq klas NewTest suzdadohme mnogo vajniq metod "toTableRow" koito parsva vsichko koeto ni trqbva kato Object arr
-        model.addRow(new NewTest("Telephone", 0, 500, 5).toTableRow());
-        model.addRow(new NewTest("Klimatik", 0, 450.55, 10).toTableRow());
-        model.addRow(new NewTest(nameColum + " for servers", 0, 3000, 8).toTableRow());
+        model.addRow(new NewTest("Telephone", 0, 200, 5).toTableRow());
+        model.addRow(new NewTest("Klimatik", 0, 300, 10).toTableRow());
+        model.addRow(new NewTest(nameColum + " for servers", 0, 400, 8).toTableRow());
         model.addRow(new NewTest().toTableRow());
 
         //pravim taka che stoinostta da sedi poprincip v centura - no za da go napravim trqbva da prenapishem chast ot funkciqta koqto pravi tova
@@ -49,17 +49,26 @@ public class Main {
         });
         //pravim cenata sushto da sedi v centura na kletkata
         table.getColumnModel().getColumn(3).setCellRenderer(new DefaultTableCellRenderer() {
-            private JTable table = new JTable();
-            private NewTest curr;
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 setHorizontalAlignment(SwingConstants.CENTER);
                 //s tozi blok ot kod vzimame stoinostta i q pravim taka che da se zapazva i promenq v samiq klas NewTest
-                this.table = table;
-                this.curr = (NewTest) table.getValueAt(row, 0);
-                double num = Double.parseDouble(value.toString());
+                NewTest curr = (NewTest) table.getValueAt(row, 0);
+                double num = Double.parseDouble(value.toString()); //parsvame stoinostta ot dadeniq red na 3ta kolona(koqto e ot double chisla) i q setvame
                 curr.setCena(num);
+                return this;
+            }
+        });
+
+        table.getColumnModel().getColumn(5).setCellRenderer(new DefaultTableCellRenderer(){
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                setHorizontalAlignment(SwingConstants.CENTER);
+                NewTest curr = (NewTest) table.getValueAt(row, 0);
+                int num = Integer.parseInt(value.toString());
+                curr.setFiksiranaStoinost(num);
                 return this;
             }
         });
@@ -117,7 +126,7 @@ public class Main {
         //obhojdame gi s for cikul za da mojem da preminem prez vseki red
         for (int i = 0; i < vals.length; i++) {
             //chrez metoda table.getValueAt(nomera na reda, nomera na kolonata) vzimame stoinostta ot kolonata koqto iskame
-            //System.out.println("Totalna cena na artikula " + table.getValueAt(i, 5));
+            System.out.println("Totalna cena na artikula " + table.getValueAt(i, 5));
             //System.out.println("Jelano Kolichestvo ot producta " + table.getValueAt(i, 2));
             //System.out.println(table.getValueAt(i, 1));
             System.out.println("Cenata na artikula " + table.getValueAt(i, 3));

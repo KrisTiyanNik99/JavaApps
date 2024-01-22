@@ -1,5 +1,3 @@
-import java.text.DecimalFormat;
-
 public class NewTest {
     private String name;
     private int kolichesto;
@@ -21,8 +19,8 @@ public class NewTest {
         this.name = name;
         this.kolichesto = kolichesto;
         this.cena = cena;
-        this.maxKolichestvo = maxKolichestvo;
         this.fiksiranaStoinost = maxKolichestvo;
+        this.maxKolichestvo = maxKolichestvo;
     }
 
     public String getName() {
@@ -38,8 +36,8 @@ public class NewTest {
     }
 
     public void setKolichesto(int kolichesto) {
-        if (kolichesto > fiksiranaStoinost) { //s tazi proverka kazvame ako kolichestvoto ot spinera koeto poluchavame e poveche ot maksimalnata broika
-            //ne mojem poveche da uvelichavame stoinostta na kolichestvoto
+        if (kolichesto > fiksiranaStoinost) { //s tazi proverka kazvame ako kolichestvoto ot spinera koeto poluchavame e poveche ot maksimalnata fiksirana broika
+            //nqma da mojem poveche da uvelichavame stoinostta na kolichestvoto
             this.kolichesto = fiksiranaStoinost;
         } else {
             this.kolichesto = kolichesto;
@@ -55,19 +53,18 @@ public class NewTest {
     }
 
     public int getMaxKolichestvo() {
-        if (maxKolichestvo < 0) {
-            return maxKolichestvo = 0;
-        } else {
-            return maxKolichestvo;
-        }
+        return maxKolichestvo;
     }
 
     public void setMaxKolichestvo(int maxKolichestvo) {
+        this.maxKolichestvo = Math.max(maxKolichestvo, 0);
+        /*
         if (maxKolichestvo < 0) {
             this.maxKolichestvo = 0;
         } else {
             this.maxKolichestvo = maxKolichestvo;
         }
+        */
     }
 
     public double getTotalCena() {
@@ -78,10 +75,18 @@ public class NewTest {
         this.totalCena = totalCena;
     }
 
+    public void setFiksiranaStoinost(int fiksiranaStoinost) {
+        this.fiksiranaStoinost = fiksiranaStoinost;
+    }
+
+    public int getFiksiranaStoinost() {
+        return fiksiranaStoinost;
+    }
+
     public Object[] toTableRow() {
         // Izkluchitelno vajen metod koito zaduljinelno ni trqbva za da mojem da vurnem Object arr(moje i da ne e object, no e silno preporuchitelno)
         return new Object[]{
-                this, name, kolichesto, cena, maxKolichestvo, "$ " + totalCena //za da suzdadem row v jtable ot rozi klass s dadenite harakteristiki
+                this, name, kolichesto, cena, maxKolichestvo, fiksiranaStoinost, "$ " + totalCena //za da suzdadem row v jtable ot rozi klass s dadenite harakteristiki
                 //vsichki stoinosti trqbva da gi vurnem kato Object array, zashtoto s nego e nai- bezopasno da se raboti
         };
     }
