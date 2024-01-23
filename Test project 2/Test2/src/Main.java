@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,12 +31,7 @@ public class Main {
         table.getColumnModel().getColumn(2).setCellEditor(new UpSellEditor());
 
         //Syzdavam redovete i slagam artikuli v nego chrez medoda "toTableRow", koito suzdadohme v NewTest
-        model.addRow(new NewTest("Laptop", 0, 100, 9).toTableRow());
-        //addRow metoda raboti s Object arr, zatova nie v nashiq klas NewTest suzdadohme mnogo vajniq metod "toTableRow" koito parsva vsichko koeto ni trqbva kato Object arr
-        model.addRow(new NewTest("Telephone", 0, 200, 5).toTableRow());
-        model.addRow(new NewTest("Klimatik", 0, 300, 10).toTableRow());
-        model.addRow(new NewTest(nameColum + " for servers", 0, 400, 8).toTableRow());
-        model.addRow(new NewTest().toTableRow());
+        dataInitialization(model);
 
         //pravim taka che stoinostta da sedi poprincip v centura - no za da go napravim trqbva da prenapishem chast ot funkciqta koqto pravi tova
         table.getColumnModel().getColumn(2).setCellRenderer(new DefaultTableCellRenderer() {
@@ -61,7 +57,7 @@ public class Main {
             }
         });
 
-        table.getColumnModel().getColumn(5).setCellRenderer(new DefaultTableCellRenderer(){
+        table.getColumnModel().getColumn(5).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
@@ -127,11 +123,21 @@ public class Main {
         for (int i = 0; i < vals.length; i++) {
             //chrez metoda table.getValueAt(nomera na reda, nomera na kolonata) vzimame stoinostta ot kolonata koqto iskame
             System.out.println("Totalna cena na artikula " + table.getValueAt(i, 5));
-            //System.out.println("Jelano Kolichestvo ot producta " + table.getValueAt(i, 2));
-            //System.out.println(table.getValueAt(i, 1));
             System.out.println("Cenata na artikula " + table.getValueAt(i, 3));
             System.out.println();
         }
         System.out.println();
+    }
+
+    public static void dataInitialization(DefaultTableModel model) {
+        //suzdavame obekt ot klasa koito ni e svruzkata s dannite
+        DataParser initData = new DataParser();
+        //izpolzvame metoda koito ni vrushta list s danni ot faila
+        List<NewTest> mainData = initData.setValuesFromDataNote();
+        //Loopvame go za da minem prez vsichki obekti
+        for (NewTest currentData : mainData) {
+            //Vzimame nastoqshtiq obek zaedno s negovite stoinosti i go dabavqme kym tablicata
+            model.addRow(currentData.toTableRow());
+        }
     }
 }

@@ -1,0 +1,9 @@
+Laptop Acer  949.99 7
+Telephone Samsung  799.99 10
+Air Condicioner  999.99 5
+Microwave  149.99 10
+Plasma TV  1049.99 3
+Coffee machine  184.99 8
+PlayStation five  899.99 3
+HeadPhones  89.99 5
+Fridges  569.99 3

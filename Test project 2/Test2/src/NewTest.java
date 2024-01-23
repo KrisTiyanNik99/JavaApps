@@ -12,15 +12,15 @@ public class NewTest {
         this.name = "empty";
         this.kolichesto = 0;
         this.cena = 0;
-        this.maxKolichestvo = 0;
+        this.fiksiranaStoinost = 0;
     }
 
-    public NewTest(String name, int kolichesto, double cena, int maxKolichestvo) {
+    public NewTest(String name, double cena, int fiksiranaStoinost) {
         this.name = name;
-        this.kolichesto = kolichesto;
+        this.kolichesto = 0;
         this.cena = cena;
-        this.fiksiranaStoinost = maxKolichestvo;
-        this.maxKolichestvo = maxKolichestvo;
+        this.fiksiranaStoinost = fiksiranaStoinost;
+        this.maxKolichestvo = fiksiranaStoinost;
     }
 
     public String getName() {
