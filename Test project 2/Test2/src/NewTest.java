@@ -2,7 +2,6 @@ public class NewTest {
     private String name;
     private int kolichesto;
     private double cena;
-
     //Novi stoinosti za test
     private int maxKolichestvo;
     private double totalCena = 0;
@@ -58,13 +57,12 @@ public class NewTest {
 
     public void setMaxKolichestvo(int maxKolichestvo) {
         this.maxKolichestvo = Math.max(maxKolichestvo, 0);
-        /*
-        if (maxKolichestvo < 0) {
+
+        /*if (maxKolichestvo < 0) {
             this.maxKolichestvo = 0;
         } else {
             this.maxKolichestvo = maxKolichestvo;
-        }
-        */
+        }*/
     }
 
     public double getTotalCena() {

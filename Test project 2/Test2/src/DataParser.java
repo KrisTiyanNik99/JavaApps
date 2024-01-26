@@ -44,7 +44,6 @@ public class DataParser {
                 //dobavqme vsichki tezi promenlivi kym NewTest obekt, koito puk go dobavqme kym Lista
                 products.add(new NewTest(nameProduct, price, fixValue));
             }
-
         } catch (FileNotFoundException e) {
             System.out.println("File data not found!");
         }
