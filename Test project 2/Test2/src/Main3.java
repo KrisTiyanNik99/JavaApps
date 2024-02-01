@@ -1,19 +1,11 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 
 public class Main3 {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Test 2");
 
-        DefaultTableModel model = new DefaultTableModel(){
-            //ot tuk pravim taka che samo 1ta kletka da e editable
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                //kolonata koqto ni trqbva da e editable
-                return column == 2;
-            }
-        };
+        CustomTableModel model = new CustomTableModel();
         model.addColumn("Age");
         model.addColumn("Student");
         model.addColumn("Edit");
@@ -21,7 +13,6 @@ public class Main3 {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(820,600);
         frame.setLayout(null);
-
 
         JTable jTable = new JTable(model);
         //nastroiki na table
@@ -31,13 +22,12 @@ public class Main3 {
         CustomTableActionEvent editor = new CustomTableActionEvent() {
             @Override
             public void onEdit(int row) {
-                System.out.println("Edit " + row);
-                
+                model.startEdit(row);
             }
 
             @Override
             public void onDelete(int row) {
-                //pravim taka che da mojem da triem reda
+                //pravim taka che da mojem da triem izbraniq ot nas red
                 if(jTable.isEditing()){
                     jTable.getCellEditor().stopCellEditing();
                 }

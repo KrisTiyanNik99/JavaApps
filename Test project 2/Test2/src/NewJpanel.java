@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class NewJpanel extends JPanel {
     private ActionButton delete;
@@ -21,8 +19,9 @@ public class NewJpanel extends JPanel {
     }
 
     public void initEvent(CustomTableActionEvent event, int row){
-        //tozi metod se griji za zadavaneto na metodi kym butonite
+        //tozi metod se griji za zadavaneto na metodi kym butonite sled poluchavane na obekt ot CustomTableActionEvent
         edit.addActionListener(e -> event.onEdit(row));
+        //sled kato CustomTableActionEvent obekta vednuj e poluchil ot kakvo mu pravqt metodite v main3 nie tuk prosto gi slagame da rabotqt po butonite
         delete.addActionListener(e-> event.onDelete(row));
     }
 }
