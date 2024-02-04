@@ -2,7 +2,7 @@ package guis;
 
 import javax.swing.*;
     /*
-        Here we setup the blueprints that the GUIs will follow for example
+        Here we set up the blueprints that the GUIs will follow for example
     */
 public abstract class MainFrame extends JFrame {
 
@@ -26,10 +26,13 @@ public abstract class MainFrame extends JFrame {
         // Launch app in the center of window
         setLocationRelativeTo(null);
 
+        // Set layout to null for easy manipulation the elements
+        setLayout(null);
+
         // GUI components
         addGuiTemplate();
     }
 
-    //A method who will be defined by every subclass
+    // A method who will be defined by every subclass
     protected abstract void addGuiTemplate();
 }
