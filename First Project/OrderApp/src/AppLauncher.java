@@ -1,4 +1,4 @@
-import guis.VedenaGui;
+import guis.MainFrame;
 
 import javax.swing.*;
 
@@ -7,7 +7,7 @@ public class AppLauncher {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new VedenaGui().setVisible(true);
+                new MainFrame("Order App").setVisible(true);
             }
         });
     }

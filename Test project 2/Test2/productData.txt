@@ -8,3 +8,5 @@ PlayStation five  899.99 3
 HeadPhones  89.99 5
 Fridges  569.99 3
 KeyBoard  99.99 10
+Desk  59.99 4
+Vase  29.99 10
