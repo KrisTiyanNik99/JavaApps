@@ -7,8 +7,7 @@ import java.awt.*;
     This main JPanel will be just a template for the other ones
 */
 public abstract class MainJpanel extends JPanel {
-    StringBuilder printOrder = new StringBuilder();
-    public MainJpanel(String title){
+    public MainJpanel(String title, StringBuilder printOrder){
         initComponents(title, printOrder);
     }
 
@@ -30,9 +29,9 @@ public abstract class MainJpanel extends JPanel {
         add(header);
 
         // Initialize different GUIs
-        initGui(printOrder);
+        initCustomComponents(printOrder);
     }
 
     // Create abstract method that we can create as we want
-    protected abstract void initGui(StringBuilder printOrder);
+    protected abstract void initCustomComponents(StringBuilder printOrder);
 }

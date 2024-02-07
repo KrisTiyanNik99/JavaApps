@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.util.List;
 
@@ -25,6 +27,10 @@ public class Main {
         model.addColumn("Max quantity");
         model.addColumn("Total quantity");
         model.addColumn("Total Price");
+
+        //ot tuk skrivame IP kolonata koqto poprincip e super vajna
+        table.getColumnModel().getColumn(0).setMinWidth(0);
+        table.getColumnModel().getColumn(0).setMaxWidth(0);
 
         //zadavam na koq kolonka iskam da se priloji kustom kolonkata s jspinnera
         table.getColumnModel().getColumn(2).setCellEditor(new UpSellEditor());

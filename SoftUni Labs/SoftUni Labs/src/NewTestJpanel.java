@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class NewTestJpanel extends JPanel {
+public class NewTestJpanel extends MainTest {
 
-    public NewTestJpanel(StringBuilder order){
-        setLayout(null);
-        setBounds(0,90, 800, 410);
+    public NewTestJpanel(){
+    }
+
+    @Override
+    public void initGui(StringBuilder storeInfo) {
         setBackground(Color.GREEN);
 
         TextField username = new TextField();
@@ -15,14 +17,15 @@ public class NewTestJpanel extends JPanel {
         JButton extractText = new JButton("extract");
         extractText.setBounds(160, 50, 50,20);
         extractText.addActionListener(e-> {
-            extract(username, order);
+            extract(username, storeInfo);
         });
         add(extractText);
     }
 
+
     public void extract(TextField username, StringBuilder order){
-        String model = username.getText();
-        if(model != null || !model.equals(" ")) {
+        order.append("Second test ");
+        if(username.getText() != null || !username.getText().equals(" ")) {
             order.append(username.getText() + "\n");
             username.setText("");
         }else {

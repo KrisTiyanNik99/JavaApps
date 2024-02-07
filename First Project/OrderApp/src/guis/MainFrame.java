@@ -2,6 +2,7 @@ package guis;
 
 import guis.components.BiroterapiyaPanel;
 import guis.components.HomePanel;
+import guis.components.VedenaPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,11 +16,15 @@ public class MainFrame extends JFrame {
     int height = 60;
 
     public MainFrame(String title) {
-        templateInitialize(title);
+        // Add StringBuilder who will store all info coming from the other classes
+        StringBuilder printOrder = new StringBuilder();
+
+        // Add components to main frame
+        templateInitialize(title, printOrder);
     }
 
     // Initialize Dashboard and his components with main JFrame settings
-    private void templateInitialize(String title) {
+    private void templateInitialize(String title, StringBuilder printOrder) {
         // Add a title to main JFrame
         setTitle(title);
 
@@ -74,9 +79,6 @@ public class MainFrame extends JFrame {
         addButtonSettings("biroterapiq.png", biroterapiya);
         dashboard.add(biroterapiya);
 
-        // Add BiroterapiyaPanel to the main frame
-        //------------------------------------------------------------------------------
-
         // Create consumer button
         JButton consumables = new JButton("Consumables");
         consumables.setBounds(0, 282, width, height);
@@ -90,12 +92,15 @@ public class MainFrame extends JFrame {
 
         //Create objects from different GUIs
         HomePanel homePage = new HomePanel("Choose supplier!");
+        VedenaPanel vedenaPage = new VedenaPanel("You choose " + vedena.getText(), printOrder);
+        vedenaPage.setVisible(false);
 
         // Add functionality to the buttons------------------------------------------
-        home.addActionListener(e -> homePage.setVisible(true));
-        biroterapiya.addActionListener(e -> {
-
+        home.addActionListener(e -> {
+            homePage.setVisible(true);
+            vedenaPage.setVisible(false);
         });
+        //biroterapiya.addActionListener(e -> {});
         //consumables.addActionListener();------------------------------------------
         //vedena.addActionListener();------------------------------------------------
 
@@ -105,8 +110,9 @@ public class MainFrame extends JFrame {
         // Add dashboard to Main GUI
         add(dashboard);
 
-        // Create HomePanel object and add it to main Frame by default
+        // Add all GUIS to main Frame by default
         add(homePage);
+        add(vedenaPage);
     }
 
     // A method that automatically puts the settings of the buttons in Main frame GUI
