@@ -1,6 +1,9 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import static javax.swing.BorderFactory.createEmptyBorder;
+import static javax.swing.text.StyleConstants.Background;
+
 public class Main3 {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Test 2");
@@ -17,6 +20,9 @@ public class Main3 {
         JTable jTable = new JTable(model);
         //nastroiki na table
         jTable.getTableHeader().setOpaque(false);
+
+        //Setingi na tablicata
+        jTable.setShowGrid(false);
 
         //overridevame CustomTableActionEvent metodite, taka kakto ni trqbva da rabotqt v tozi sluchai
         CustomTableActionEvent editor = new CustomTableActionEvent() {
@@ -59,6 +65,8 @@ public class Main3 {
 
         JScrollPane scrollPane = new JScrollPane(jTable);
         scrollPane.setBounds(20,30, 510, 300);
+        // premahvame zaobikalqshata go 
+        scrollPane.setBorder(createEmptyBorder());
 
         /*JPanel panel = new JPanel();
         panel.setLayout(null);

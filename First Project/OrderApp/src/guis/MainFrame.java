@@ -93,6 +93,7 @@ public class MainFrame extends JFrame {
         //Create objects from different GUIs
         HomePanel homePage = new HomePanel("Choose supplier!");
         VedenaPanel vedenaPage = new VedenaPanel("You choose " + vedena.getText(), printOrder);
+        BiroterapiyaPanel biroterapiyaPage = new BiroterapiyaPanel("You choose " + biroterapiya.getText(), printOrder);
         vedenaPage.setVisible(false);
 
         // Add functionality to the buttons------------------------------------------
@@ -102,7 +103,10 @@ public class MainFrame extends JFrame {
         });
         //biroterapiya.addActionListener(e -> {});
         //consumables.addActionListener();------------------------------------------
-        //vedena.addActionListener();------------------------------------------------
+        vedena.addActionListener(e -> {
+            vedenaPage.setVisible(true);
+            homePage.setVisible(false);
+        });
 
         // Add button vedena to dashboard
         dashboard.add(vedena);
