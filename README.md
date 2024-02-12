@@ -9,15 +9,15 @@
  This repository contains a collection of Java applications developed by me. Each application serves a different purpose, catering to various aspects of programming and software development. Below is an overview of the projects contained within the JavaApps directory:
 
 ## Projects info
-###First Project: OrderApp
+First Project: OrderApp
 
 This directory houses the application I developed for my current work, primarily focusing on handling requests efficiently. It represents my practical skills and experience in addressing real-world problems within the context of my professional endeavors.
 
-###SoftUni Labs 
+SoftUni Labs 
 
 Within this directory, you'll find a collection of tasks assigned to me by SoftUni. These tasks serve as valuable learning opportunities, allowing me to enhance my understanding of Java programming and software development principles.
 
-###Test Project 2:
+Test Project 2:
 
 The purpose of this directory is to experiment and test various concepts before implementing them in real projects. It serves as a sandbox environment where I can explore different approaches and ensure their effectiveness before integrating them into larger-scale applications.
 
