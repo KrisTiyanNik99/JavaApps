@@ -82,6 +82,8 @@ public class Main {
         table.getTableHeader().setBackground(new Color(32, 136, 203));
         table.getTableHeader().setForeground(new Color(255, 255, 255));
         table.setSelectionBackground(new Color(232, 57, 95));
+
+        // slagame table v scrollpane
         JScrollPane ne = new JScrollPane(table);
         //slagame na scrollpane za da znae jpanela kude da go pozicionira
         ne.setBounds(40, 20, 600, 200);

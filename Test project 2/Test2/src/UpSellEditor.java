@@ -12,6 +12,7 @@ public class UpSellEditor extends DefaultCellEditor {
 
     public UpSellEditor() {
         super(new JCheckBox());
+        table = new JTable();
         spinner = new JSpinner();
         SpinnerNumberModel numberModel = (SpinnerNumberModel) spinner.getModel();
         numberModel.setMinimum(0);
@@ -47,11 +48,11 @@ public class UpSellEditor extends DefaultCellEditor {
 
     private void spinnerChange() {
         int qynt = Integer.parseInt(spinner.getValue().toString());
-        if (qynt != currentItemSet.getKolichesto()) { //Proverqvame dali kolichestvoto e razlichno promenqno
+        if (qynt != currentItemSet.getKolichesto() || qynt == currentItemSet.getKolichesto()) { //Proverqvame dali kolichestvoto e razlichno promenqno
             //Tui kato sme v sluchq kogato sa razlichni stoinostite na spinera i kolichestvoto, prosto gi uednakvqvame v tozi red
             currentItemSet.setKolichesto(qynt); //kolichestvoto obache ne moje da e poveche ot fiksiranata mu stoinost v klasa
             //updatevame stoinostta na maxkolichestvo sprqmo tova kakvo e chisloto v spinera
-            currentItemSet.setMaxKolichestvo(currentItemSet.getFiksiranaStoinost() - qynt);
+            currentItemSet.setMaxKolichestvo(currentItemSet.getFiksiranaStoinost() - currentItemSet.getKolichesto());
             //sled tova veche pri vsichki sluchai si smqtame cenata po kolichestvoto
             currentItemSet.setTotalCena(currentItemSet.getCena() * currentItemSet.getKolichesto()); //tuk setvame total cenata
             table.setValueAt("$ " + currentItemSet.getTotalCena(), row, 6);

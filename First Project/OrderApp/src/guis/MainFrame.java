@@ -1,11 +1,14 @@
 package guis;
 
 import guis.components.BiroterapiyaPanel;
+import guis.components.ConsumablesPanel;
 import guis.components.HomePanel;
 import guis.components.VedenaPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
     Here we set up first major part of our App - main GUI
@@ -15,16 +18,18 @@ public class MainFrame extends JFrame {
     int width = 205;
     int height = 60;
 
+    // Create a constructor
     public MainFrame(String title) {
         // Add StringBuilder who will store all info coming from the other classes
-        StringBuilder printOrder = new StringBuilder();
+        List<String> printOrder = new ArrayList<>();
+        System.out.println(title + " is started!.....");
 
         // Add components to main frame
         templateInitialize(title, printOrder);
     }
 
     // Initialize Dashboard and his components with main JFrame settings
-    private void templateInitialize(String title, StringBuilder printOrder) {
+    private void templateInitialize(String title, List<String> printOrder) {
         // Add a title to main JFrame
         setTitle(title);
 
@@ -43,7 +48,7 @@ public class MainFrame extends JFrame {
         // Set layout to null for easy manipulation the elements
         setLayout(null);
 
-        // Create a dashboard
+        // Create Dashboard
         JPanel dashboard = new JPanel();
         dashboard.setLayout(null);
 
@@ -70,57 +75,74 @@ public class MainFrame extends JFrame {
         // Home button
         JButton home = new JButton("Home          ");
         home.setBounds(0, 82, width, height - 5);
-        addButtonSettings("home.png", home);
-        dashboard.add(home);
+        addButtonSettings("home.png", home, dashboard);
 
-        // Create Biroterapiq button
+        // Create Biroterapiya button
         JButton biroterapiya = new JButton("Biroterapiya");
         biroterapiya.setBounds(0, 181, width, height);
-        addButtonSettings("biroterapiq.png", biroterapiya);
-        dashboard.add(biroterapiya);
+        addButtonSettings("biroterapiq.png", biroterapiya, dashboard);
 
         // Create consumer button
         JButton consumables = new JButton("Consumables");
         consumables.setBounds(0, 282, width, height);
-        addButtonSettings("consumer.png", consumables);
-        dashboard.add(consumables);
+        addButtonSettings("consumer.png", consumables, dashboard);
 
         // Create Vedena button
         JButton vedena = new JButton("Vedena        ");
         vedena.setBounds(0, 382, width, height - 5);
-        addButtonSettings("vedena.png", vedena);
+        addButtonSettings("vedena.png", vedena, dashboard);
 
-        //Create objects from different GUIs
+        // Create home object
         HomePanel homePage = new HomePanel("Choose supplier!");
-        VedenaPanel vedenaPage = new VedenaPanel("You choose " + vedena.getText(), printOrder);
-        BiroterapiyaPanel biroterapiyaPage = new BiroterapiyaPanel("You choose " + biroterapiya.getText(), printOrder);
+
+        // Create objects from different GUIs
+        VedenaPanel vedenaPage = new VedenaPanel(vedena.getText(), printOrder);
+        BiroterapiyaPanel biroterapiyaPage = new BiroterapiyaPanel(biroterapiya.getText(), printOrder);
+        ConsumablesPanel consumablePage = new ConsumablesPanel(consumables.getText(), printOrder);
+
+        // Set all other GUIS except HomePage to false
+        biroterapiyaPage.setVisible(false);
+        consumablePage.setVisible(false);
         vedenaPage.setVisible(false);
 
-        // Add functionality to the buttons------------------------------------------
+        // Add functionality to the buttons
         home.addActionListener(e -> {
             homePage.setVisible(true);
+            biroterapiyaPage.setVisible(false);
+            consumablePage.setVisible(false);
             vedenaPage.setVisible(false);
         });
-        //biroterapiya.addActionListener(e -> {});
-        //consumables.addActionListener();------------------------------------------
-        vedena.addActionListener(e -> {
-            vedenaPage.setVisible(true);
+        biroterapiya.addActionListener(e -> {
             homePage.setVisible(false);
+            biroterapiyaPage.setVisible(true);
+            consumablePage.setVisible(false);
+            vedenaPage.setVisible(false);
         });
-
-        // Add button vedena to dashboard
-        dashboard.add(vedena);
+        consumables.addActionListener(e -> {
+            homePage.setVisible(false);
+            biroterapiyaPage.setVisible(false);
+            consumablePage.setVisible(true);
+            vedenaPage.setVisible(false);
+        });
+        vedena.addActionListener(e -> {
+            homePage.setVisible(false);
+            biroterapiyaPage.setVisible(false);
+            consumablePage.setVisible(false);
+            vedenaPage.setVisible(true);
+        });
 
         // Add dashboard to Main GUI
         add(dashboard);
 
         // Add all GUIS to main Frame by default
         add(homePage);
+        add(biroterapiyaPage);
+        add(consumablePage);
         add(vedenaPage);
     }
 
-    // A method that automatically puts the settings of the buttons in Main frame GUI
-    private void addButtonSettings(String url, JButton button) {
+    // A method with which we will be able to put different settings on the elements
+    private void addButtonSettings(String url, JButton button, JPanel dashboard) {
         // Set color background
         button.setBackground(new Color(85, 65, 118));
 
@@ -142,5 +164,8 @@ public class MainFrame extends JFrame {
 
         // Add icon to the button
         button.setIcon(editIcon);
+
+        // Add button to JPanel
+        dashboard.add(button);
     }
 }

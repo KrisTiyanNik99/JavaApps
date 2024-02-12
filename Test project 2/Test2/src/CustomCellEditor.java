@@ -6,7 +6,7 @@ public class CustomCellEditor extends DefaultCellEditor {
     private CustomTableActionEvent event;
     public CustomCellEditor(CustomTableActionEvent event) {
         super(new JCheckBox());
-        //slagame ediniq CTAE da ima funkciite na drugiq CTAE
+        //slagame ediniq CTAE da ima funkciite na funshniq CTAE
         this.event = event;
     }
 
