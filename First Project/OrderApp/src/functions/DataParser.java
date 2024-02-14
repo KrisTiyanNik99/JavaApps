@@ -22,7 +22,7 @@ public class DataParser {
 
         try {
             // Set file reader to read our file with products
-            FileReader productFile = new FileReader("productsStore.txt");
+            FileReader productFile = new FileReader("ProductsStore.txt");
 
             // Init scanner who will scan our file
             Scanner scanner = new Scanner(productFile);

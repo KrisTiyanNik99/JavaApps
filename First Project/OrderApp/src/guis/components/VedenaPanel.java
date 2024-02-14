@@ -11,6 +11,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -86,7 +88,7 @@ public class VedenaPanel extends MainJpanel {
         addButtonSettings(save);
         add(save);
 
-        // Add Functions to the buttons--------------------------------
+        // Add Functions to the buttons
         reset.addActionListener(e -> {
             if (isAdded) {
                 addDialogWindow("Your request order is canceled!", "Reset");
@@ -139,7 +141,13 @@ public class VedenaPanel extends MainJpanel {
                 addDialogWindow("Empty field/s!!", "Error");
             }
         });
-        //save.addActionListener();--------------------------------------------------
+        save.addActionListener(e -> {
+            table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+            table.setRowSelectionAllowed(true);
+            table.setRowSelectionInterval(0, table.getRowCount() - 1);
+
+            savingTableData(table);
+        });
     }
 
     // This is the method that will shape the request as a cash receipt
@@ -169,7 +177,7 @@ public class VedenaPanel extends MainJpanel {
                 if (quantity > 0) {
                     // Set values from table by columns in different values types
                     String nameProduct = String.valueOf(table.getValueAt(i, 1));
-                    countProducts ++;
+                    countProducts++;
 
                     // Split last colum because it contains "$" symbol
                     String[] totalPriceString = String.valueOf(table.getValueAt(i, 4)).split(" ");
@@ -198,16 +206,37 @@ public class VedenaPanel extends MainJpanel {
     }
 
     // Method A method that will take care of removing the request made by this JPanel
-    private static void clearOrder(List<String> printOrders){
+    private static void clearOrder(List<String> printOrders) {
         // Loop our List with orders
         for (int i = 0; i < printOrders.size(); i++) {
             String order = printOrders.get(i);
 
             // We check which request is the lead one because it collides with a special notation and remove it
-            if (order.contains("Ведена заявка")){
+            if (order.contains("Ведена заявка")) {
                 printOrders.remove(i);
                 break;
             }
+        }
+    }
+
+    // Method for saving data from table
+    private static void savingTableData(JTable table) {
+        StringBuilder allProducts = new StringBuilder();
+        int[] rows = table.getSelectedRows();
+
+        for (int i = 0; i < rows.length; i++) {
+
+            Product currentProduct = (Product) table.getValueAt(i, 0);
+            allProducts.append(currentProduct.getName()).append(" : ").append(currentProduct.getPrice()).append("\n");
+        }
+
+        try {
+            FileWriter writeProducts = new FileWriter("ProductsStore.txt");
+            writeProducts.write(allProducts.toString());
+            writeProducts.close();
+
+        } catch (IOException e) {
+            System.out.println("File was not found!");
         }
     }
 
@@ -288,7 +317,7 @@ public class VedenaPanel extends MainJpanel {
     }
 
     // Method for Dialog Messages
-    private static void addDialogWindow(String message, String title){
+    private static void addDialogWindow(String message, String title) {
         // Dialog who will show if someone try to do something that will break the program
         JOptionPane.showMessageDialog(new Frame(),
                 message, title, JOptionPane.ERROR_MESSAGE);
