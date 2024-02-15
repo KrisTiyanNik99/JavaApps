@@ -1,6 +1,7 @@
-package components;
+package guis;
 
 import custom.Word;
+import custom.WordList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +36,7 @@ public class JLanguagePanel extends JPanel {
 
         // We add JLabel to our wordDisplay
         JLabel text = new JLabel();
-        text.setBounds(0, 0, 300, 50);
+        text.setBounds(0, 0, 300, 100);
 
         // Change font style and set text in the center
         text.setFont(new Font("Word", Font.BOLD, 20));
@@ -115,7 +116,7 @@ public class JLanguagePanel extends JPanel {
         // We get and save this word because we will display it to out JPanel
         Word guessingWord = words.get(num);
 
-        text.setText(guessingWord.getWord());
+        text.setText(guessingWord.getWord() + " " + guessingWord.getEmoji());
 
         // Generate random number, where will be our true answer
         int trueAnswerPosition = random.nextInt(buttons.size());
@@ -132,11 +133,7 @@ public class JLanguagePanel extends JPanel {
             // Check if the button index matches our word
             if (i == trueAnswerPosition) {
                 buttons.get(i).setText(guessingWord.getTranslatedWord());
-                buttons.get(i).addActionListener(e -> {
-                    changeWord.set(true);
-                    JOptionPane.showMessageDialog(new Frame(),
-                            "You successfully guess the word", "Success", JOptionPane.INFORMATION_MESSAGE);
-                });
+                buttons.get(i).addActionListener(e -> changeWord.set(true));
             } else {
                 // If not we put the "wrong word" on the other buttons
                 buttons.get(i).setText(wrongWord.getTranslatedWord());

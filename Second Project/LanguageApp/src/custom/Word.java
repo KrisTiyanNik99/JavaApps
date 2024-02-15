@@ -8,10 +8,12 @@ public class Word {
     // Init our components
     private String word;
     private String translatedWord;
+    private String emoji;
 
-    public Word(String word, String translatedWord) {
+    public Word(String word, String translatedWord, String emoji) {
         this.word = word;
         this.translatedWord = translatedWord;
+        this.emoji = emoji;
     }
 
     public String getWord() {
@@ -20,5 +22,9 @@ public class Word {
 
     public String getTranslatedWord() {
         return translatedWord;
+    }
+
+    public String getEmoji() {
+        return emoji;
     }
 }

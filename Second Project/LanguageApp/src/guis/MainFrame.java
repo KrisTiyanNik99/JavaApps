@@ -1,16 +1,16 @@
-package components;
+package guis;
 
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
     // We create a constructor for our MainFrame
-    public MainFrame(String title){
+    public MainFrame(String title) {
 
         // In the constructor we have a method that creates our frame settings
         initComponents(title);
     }
 
-    public void initComponents(String title){
+    public void initComponents(String title) {
 
         // From here we lower the settings to MainFrame
         setSize(800, 600);

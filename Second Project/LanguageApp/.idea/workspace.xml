@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="70ddf180-465c-4eb7-8185-4af276690871" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/custom/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/custom/WordList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/guis/JLanguagePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/guis/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LanguageApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LanguageApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/JLanguagePanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WordList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/custom/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/custom/Word.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2cNtAAoKfTFvUtick57Me3HlzSl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppLauncher (1).executor": "Run",
+    "Application.AppLauncher (2).executor": "Run",
+    "Application.AppLauncher (3).executor": "Run",
+    "Application.AppLauncher.executor": "Run",
+    "Application.Test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.AppLauncher">
+    <configuration name="AppLauncher (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppLauncher" />
+      <module name="LanguageApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppLauncher (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppLauncher" />
+      <module name="LanguageApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppLauncher (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppLauncher" />
+      <module name="LanguageApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppLauncher" />
+      <module name="LanguageApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="custom.Test" />
+      <module name="LanguageApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="custom.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AppLauncher" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.AppLauncher (3)" />
+        <item itemvalue="Application.AppLauncher (2)" />
+        <item itemvalue="Application.AppLauncher (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="70ddf180-465c-4eb7-8185-4af276690871" name="Changes" comment="" />
+      <created>1707963717380</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707963717380</updated>
+    </task>
+    <servers />
+  </component>
+</project>
