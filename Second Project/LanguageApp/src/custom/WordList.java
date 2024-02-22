@@ -11,18 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WordList {
+
+    // We create our List with words and return it to our main
+    List<Word> words = new ArrayList<>();
+
     // We create our empty constructor because we do not need a something special to do with him
     public WordList() {
     }
 
     public List<Word> initWords() {
-        // We create our List with words and return it to our main
-        List<Word> words = new ArrayList<>();
 
         // Get file location
         String jsonFilePath = "C:\\Users\\Kris\\Desktop\\Java GUI projects\\JavaApps\\Second Project\\LanguageApp\\Words.json";
 
         try {
+
             // Read json file
             String jsonContent = new String(Files.readAllBytes(Paths.get(jsonFilePath)));
             JSONObject jsonObject = new JSONObject(jsonContent);
@@ -32,6 +35,7 @@ public class WordList {
 
             // Loop through all words
             for (int i = 0; i < wordsArray.length(); i++) {
+
                 // We go through each element of the word array in the json file
                 JSONObject currentWord = wordsArray.getJSONObject(i);
 

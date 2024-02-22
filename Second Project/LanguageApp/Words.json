@@ -16,11 +16,6 @@
       "emoji": "🌍"
     },
     {
-      "word": "serendipity",
-      "translate": "случайност",
-      "emoji": "🍀"
-    },
-    {
       "word": "ethereal",
       "translate": "ефирен",
       "emoji": "🌌"
@@ -32,12 +27,12 @@
     },
     {
       "word": "equanimity",
-      "translate": "спокойствие",
+      "translate": "невъзмутимост",
       "emoji": "😌"
     },
     {
       "word": "effervescent",
-      "translate": "жив",
+      "translate": "искрящ",
       "emoji": "✨"
     },
     {
@@ -62,7 +57,7 @@
     },
     {
       "word": "ephemeral",
-      "translate": "мигновен",
+      "translate": "ефимерен",
       "emoji": "🌸"
     },
     {
@@ -72,12 +67,12 @@
     },
     {
       "word": "enthusiasm",
-      "translate": "вълнение",
+      "translate": "ентусиазъм",
       "emoji": "🎉"
     },
     {
       "word": "bliss",
-      "translate": "щастие",
+      "translate": "блаженство",
       "emoji": "😊"
     },
     {
@@ -106,23 +101,23 @@
       "emoji": "🌧️"
     },
     {
-      "word": "serenity",
-      "translate": "спокойствие",
+      "word": "wave",
+      "translate": "вълна",
       "emoji": "🌊"
     },
     {
-      "word": "epicurean",
+      "word": "sophisticated",
       "translate": "изискан",
       "emoji": "🍴"
     },
     {
       "word": "resplendent",
-      "translate": "преливащ",
+      "translate": "блестящ",
       "emoji": "✨"
     },
     {
       "word": "iridescent",
-      "translate": "радужен",
+      "translate": "преливащ се",
       "emoji": "🌈"
     },
     {
@@ -132,7 +127,7 @@
     },
     {
       "word": "euphoria",
-      "translate": "евфория",
+      "translate": "еуфория",
       "emoji": "🎆"
     },
     {
@@ -147,7 +142,7 @@
     },
     {
       "word": "illuminate",
-      "translate": "просветлявам",
+      "translate": "озарявам",
       "emoji": "💡"
     }
   ]

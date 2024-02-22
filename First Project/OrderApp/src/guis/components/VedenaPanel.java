@@ -207,6 +207,7 @@ public class VedenaPanel extends MainJpanel {
 
     // Method A method that will take care of removing the request made by this JPanel
     private static void clearOrder(List<String> printOrders) {
+
         // Loop our List with orders
         for (int i = 0; i < printOrders.size(); i++) {
             String order = printOrders.get(i);
@@ -221,6 +222,7 @@ public class VedenaPanel extends MainJpanel {
 
     // Method for saving data from table
     private static void savingTableData(JTable table) {
+
         StringBuilder allProducts = new StringBuilder();
         int[] rows = table.getSelectedRows();
 

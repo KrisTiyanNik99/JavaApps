@@ -11,28 +11,57 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class JLanguagePanel extends JPanel {
+public class JLanguagePanel extends JFrame {
+
     // Set boolean who will listen if we try to change word without
     AtomicBoolean changeWord = new AtomicBoolean(true);
 
-    // Create our custom JPanel who will store our things for displaying
-    public JLanguagePanel(int width, int height) {
+    // Create our custom JFrame who will store our things for displaying
+    public JLanguagePanel(int width, int height, JMenuBar menuBar) {
 
         //Init components method
-        initLanguageGUI(width, height);
+        initLanguageGUI(width, height, menuBar);
     }
 
-    private void initLanguageGUI(int width, int height) {
+    // Set all component to our main GUI for beginners
+    private void initLanguageGUI(int width, int height, JMenuBar menuBar) {
 
-        // Set settings to our custom JPanel
+        // Set settings to our custom JFrame
         setLayout(null);
         setSize(width, height);
-        setBackground(Color.BLUE);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        getContentPane().setBackground(Color.BLUE);
+
+        // Set already setup menu bar who come from our MainFrame
+        setJMenuBar(menuBar);
+
+        // Get first menu item
+        JMenu firstMenu = menuBar.getMenu(0);
+        JMenuItem firstItem = firstMenu.getItem(0);
+
+        // Remove all actions
+        removeActions(firstItem);
+
+        // Set new action
+        firstItem.addActionListener(e -> {
+            dispose();
+            new MainFrame();
+        });
+
+        // Repeat the for second menu item
+        JMenuItem secondItem = menuBar.getMenu(1).getItem(0);
+        removeActions(secondItem);
+        secondItem.addActionListener(e -> {
+            dispose();
+            new AddWordPanel(getWidth(), getHeight(), menuBar);
+        });
 
         // We create our main scene where the word we will have to guess will appear
         JPanel wordDisplay = new JPanel();
         wordDisplay.setLayout(null);
-        wordDisplay.setBounds(250, 100, 300, 100);
+        wordDisplay.setBounds(250, 80, 300, 100);
 
         // We add JLabel to our wordDisplay
         JLabel text = new JLabel();
@@ -49,24 +78,25 @@ public class JLanguagePanel extends JPanel {
         List<JButton> buttons = new ArrayList<>();
 
         JButton firstAnswer = new JButton();
-        firstAnswer.setBounds(140, 245, 250, 100);
+        firstAnswer.setBounds(140, 225, 250, 100);
         buttonSettings(firstAnswer, buttons);
 
         JButton secondAnswer = new JButton();
-        secondAnswer.setBounds(420, 245, 250, 100);
+        secondAnswer.setBounds(420, 225, 250, 100);
         buttonSettings(secondAnswer, buttons);
 
         JButton thirdAnswer = new JButton();
-        thirdAnswer.setBounds(140, 365, 250, 100);
+        thirdAnswer.setBounds(140, 345, 250, 100);
         buttonSettings(thirdAnswer, buttons);
 
         JButton forthAnswer = new JButton();
-        forthAnswer.setBounds(420, 365, 250, 100);
+        forthAnswer.setBounds(420, 345, 250, 100);
         buttonSettings(forthAnswer, buttons);
 
         // Button for next word
         JButton next = new JButton("Next word");
-        next.setBounds(550, 500, 200, 50);
+        next.setBounds(560, 485, 200, 50);
+        next.setFocusPainted(false);
         add(next);
 
         // Add all buttons to MainJPanel
@@ -82,32 +112,43 @@ public class JLanguagePanel extends JPanel {
         // Create random generator
         Random random = new Random();
 
+        // Set words at start
+        startGuessWord(words, text, buttons, random, changeWord, wordDisplay);
+
         // Action to 'next' button
         next.addActionListener(e -> {
             if (changeWord.get()) {
+                wordDisplay.setBackground(Color.WHITE);
                 changeWord.set(false);
-                startGuessWord(words, text, buttons, random, changeWord);
+                startGuessWord(words, text, buttons, random, changeWord, wordDisplay);
             }
         });
+
+        // Set visible to true because we want when we call this class to appear instantly
+        setVisible(true);
     }
 
-    private static void startGuessWord(List<Word> words, JLabel text, List<JButton> buttons, Random random, AtomicBoolean changeWord) {
+    // Method from which the appearance of words will begin
+    private static void startGuessWord(List<Word> words, JLabel text, List<JButton> buttons, Random random,
+                                       AtomicBoolean changeWord, JPanel wordDisplay) {
 
         // Create List with already used number
         List<Integer> usedNumbers = new ArrayList<>();
 
         // We need to reset all button action
         for (JButton button : buttons) {
+
             // First we get all actions that our buttons have
             ActionListener[] listeners = button.getActionListeners();
 
             for (ActionListener listener : listeners) {
+
                 // Now we remove all actions from our buttons
                 button.removeActionListener(listener);
             }
         }
 
-        // Generate random num from words size
+        // Generate random num from words size that will represent out main word
         int num = random.nextInt(words.size());
 
         // Add number of this word to list to prevent possible word matching
@@ -123,6 +164,7 @@ public class JLanguagePanel extends JPanel {
 
         // Now we loop through all the buttons and put action events on them
         for (int i = 0; i < buttons.size(); i++) {
+
             // We take the index of a new word that we don't have until now
             int newWordIndex = checkForUsedNum(random, usedNumbers, words);
 
@@ -130,21 +172,30 @@ public class JLanguagePanel extends JPanel {
             Word wrongWord = words.get(newWordIndex);
             usedNumbers.add(newWordIndex);
 
-            // Check if the button index matches our word
+            // Check if the button index matches with our "true word"
             if (i == trueAnswerPosition) {
                 buttons.get(i).setText(guessingWord.getTranslatedWord());
-                buttons.get(i).addActionListener(e -> changeWord.set(true));
+                buttons.get(i).addActionListener(e -> {
+                    wordDisplay.setBackground(new Color(5, 155, 67));
+                    changeWord.set(true);
+                });
+
             } else {
+
                 // If not we put the "wrong word" on the other buttons
                 buttons.get(i).setText(wrongWord.getTranslatedWord());
-                buttons.get(i).addActionListener(e -> JOptionPane.showMessageDialog(new Frame(),
-                        "Wrong guess! Try again!", "Wrong", JOptionPane.ERROR_MESSAGE));
+                buttons.get(i).addActionListener(e -> {
+                    wordDisplay.setBackground(Color.RED);
+                    JOptionPane.showMessageDialog(new Frame(),
+                            "Wrong guess! Try again!", "Wrong", JOptionPane.ERROR_MESSAGE);
+                });
             }
         }
     }
 
     // Method for checking if someone of the generated numbers are already used
     private static int checkForUsedNum(Random random, List<Integer> usedNumbers, List<Word> words) {
+
         // Generate random number
         int generatedNumber = random.nextInt(words.size());
 
@@ -160,6 +211,7 @@ public class JLanguagePanel extends JPanel {
 
     // Method for set mandatory setting to our buttons
     private static void buttonSettings(JButton button, List<JButton> buttons) {
+
         // Set Background color
         button.setBackground(Color.GREEN);
 
@@ -170,5 +222,15 @@ public class JLanguagePanel extends JPanel {
         button.setFont(new Font("Inside", Font.BOLD, 15));
 
         buttons.add(button);
+    }
+
+    private static void removeActions(JMenuItem item) {
+
+        ActionListener[] listeners = item.getActionListeners();
+        for (ActionListener listener : listeners) {
+
+            // Now we remove all actions from our buttons
+            item.removeActionListener(listener);
+        }
     }
 }

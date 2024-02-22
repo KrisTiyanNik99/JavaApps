@@ -5,6 +5,7 @@ package custom;
     and string with translated word to bulgarian
  */
 public class Word {
+
     // Init our components
     private String word;
     private String translatedWord;
