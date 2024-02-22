@@ -10,11 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class JLanguagePanel extends JFrame {
 
-    // Set boolean who will listen if we try to change word without
-    AtomicBoolean changeWord = new AtomicBoolean(true);
+    // Set boolean who will listen if we try to change word without guess the try word
+    AtomicBoolean changeWord = new AtomicBoolean(false);
+
+    // var who will store our all guesses
+    AtomicInteger guessed = new AtomicInteger(0);
 
     // Create our custom JFrame who will store our things for displaying
     public JLanguagePanel(int width, int height, JMenuBar menuBar) {
@@ -26,37 +30,35 @@ public class JLanguagePanel extends JFrame {
     // Set all component to our main GUI for beginners
     private void initLanguageGUI(int width, int height, JMenuBar menuBar) {
 
-        // Set settings to our custom JFrame
-        setLayout(null);
-        setSize(width, height);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // Setting up our JFrame
+        setMandatoryFrameSettings(width, height);
         getContentPane().setBackground(Color.BLUE);
 
         // Set already setup menu bar who come from our MainFrame
         setJMenuBar(menuBar);
+        setActionsToMenuItems(menuBar);
 
-        // Get first menu item
-        JMenu firstMenu = menuBar.getMenu(0);
-        JMenuItem firstItem = firstMenu.getItem(0);
+        // Create a panel to visualize how many words we have guessed
+        JPanel guessedScorePanel = new JPanel();
+        guessedScorePanel.setLayout(null);
+        guessedScorePanel.setBounds(700, 0, 100, 40);
+        guessedScorePanel.setBackground(getContentPane().getBackground());
+        add(guessedScorePanel);
 
-        // Remove all actions
-        removeActions(firstItem);
+        // JLabel who store number with guessed words
+        JLabel score = new JLabel(Integer.toString(guessed.get()));
+        score.setBounds(50, 0, 50, 40);
+        score.setFont(new Font("Text", Font.BOLD, 20));
+        score.setForeground(Color.BLACK);
+        guessedScorePanel.add(score);
 
-        // Set new action
-        firstItem.addActionListener(e -> {
-            dispose();
-            new MainFrame();
-        });
+        // Add icon to our JPanel
+        ImageIcon imageIcon = resizeIcon(new ImageIcon("check.png"));
 
-        // Repeat the for second menu item
-        JMenuItem secondItem = menuBar.getMenu(1).getItem(0);
-        removeActions(secondItem);
-        secondItem.addActionListener(e -> {
-            dispose();
-            new AddWordPanel(getWidth(), getHeight(), menuBar);
-        });
+        // JLabel who store image
+        JLabel imagePanel = new JLabel(imageIcon);
+        imagePanel.setBounds(0, 0, 50, 40);
+        guessedScorePanel.add(imagePanel);
 
         // We create our main scene where the word we will have to guess will appear
         JPanel wordDisplay = new JPanel();
@@ -121,6 +123,9 @@ public class JLanguagePanel extends JFrame {
                 wordDisplay.setBackground(Color.WHITE);
                 changeWord.set(false);
                 startGuessWord(words, text, buttons, random, changeWord, wordDisplay);
+
+                // Guessed words +1 and display it
+                updateGuessedWords(score, guessed);
             }
         });
 
@@ -165,13 +170,6 @@ public class JLanguagePanel extends JFrame {
         // Now we loop through all the buttons and put action events on them
         for (int i = 0; i < buttons.size(); i++) {
 
-            // We take the index of a new word that we don't have until now
-            int newWordIndex = checkForUsedNum(random, usedNumbers, words);
-
-            // We parse our index to word and then add this index to our list with used index's
-            Word wrongWord = words.get(newWordIndex);
-            usedNumbers.add(newWordIndex);
-
             // Check if the button index matches with our "true word"
             if (i == trueAnswerPosition) {
                 buttons.get(i).setText(guessingWord.getTranslatedWord());
@@ -182,10 +180,18 @@ public class JLanguagePanel extends JFrame {
 
             } else {
 
-                // If not we put the "wrong word" on the other buttons
+                // We take the index of a new word that we don't have until now
+                int newWordIndex = checkForUsedNum(random, usedNumbers, words);
+                usedNumbers.add(newWordIndex);
+
+                // We parse our index to word and just paste this "wrong" word to this button
+                Word wrongWord = words.get(newWordIndex);
+
+                // Here we are in the case where the position with the correct answer is different
                 buttons.get(i).setText(wrongWord.getTranslatedWord());
                 buttons.get(i).addActionListener(e -> {
                     wordDisplay.setBackground(Color.RED);
+                    changeWord.set(false);
                     JOptionPane.showMessageDialog(new Frame(),
                             "Wrong guess! Try again!", "Wrong", JOptionPane.ERROR_MESSAGE);
                 });
@@ -232,5 +238,57 @@ public class JLanguagePanel extends JFrame {
             // Now we remove all actions from our buttons
             item.removeActionListener(listener);
         }
+    }
+
+    // Method that will update the text in the JPanel field with the already known words
+    private static void updateGuessedWords(JLabel trueWordNum, AtomicInteger guessed) {
+
+        // Update our value and set it
+        guessed.incrementAndGet();
+        trueWordNum.setText(Integer.toString(guessed.get()));
+    }
+
+    // Resize icon method
+    private static ImageIcon resizeIcon(ImageIcon imageIcon) {
+
+        Image image = imageIcon.getImage();
+        Image newImg = image.getScaledInstance(40,40, java.awt.Image.SCALE_SMOOTH);
+
+        return new ImageIcon(newImg);
+    }
+
+    // Set actions to out menu bar items
+    private void setActionsToMenuItems(JMenuBar menuBar) {
+
+        // Get first menu item
+        JMenu firstMenu = menuBar.getMenu(0);
+        JMenuItem firstItem = firstMenu.getItem(0);
+
+        // Remove all actions
+        removeActions(firstItem);
+
+        // Set new action
+        firstItem.addActionListener(e -> {
+            dispose();
+            new MainFrame();
+        });
+
+        // Repeat the for second menu item
+        JMenuItem secondItem = menuBar.getMenu(1).getItem(0);
+        removeActions(secondItem);
+        secondItem.addActionListener(e -> {
+            dispose();
+            new AddWordPanel(getWidth(), getHeight(), menuBar);
+        });
+    }
+
+    private void setMandatoryFrameSettings(int width, int height) {
+
+        // Set settings to our custom JFrame
+        setLayout(null);
+        setSize(width, height);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }

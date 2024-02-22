@@ -15,14 +15,14 @@ public class WordList {
     // We create our List with words and return it to our main
     List<Word> words = new ArrayList<>();
 
+    // Get file location
+    String jsonFilePath = "C:\\Users\\Kris\\Desktop\\Java GUI projects\\JavaApps\\Second Project\\LanguageApp\\Words.json";
+
     // We create our empty constructor because we do not need a something special to do with him
     public WordList() {
     }
 
     public List<Word> initWords() {
-
-        // Get file location
-        String jsonFilePath = "C:\\Users\\Kris\\Desktop\\Java GUI projects\\JavaApps\\Second Project\\LanguageApp\\Words.json";
 
         try {
 

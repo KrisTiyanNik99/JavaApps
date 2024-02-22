@@ -5,35 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70ddf180-465c-4eb7-8185-4af276690871" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/guis/AddWordPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../First Project/OrderApp/PrintedOrder.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../First Project/OrderApp/PrintedOrder.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../First Project/OrderApp/src/guis/components/VedenaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../First Project/OrderApp/src/guis/components/VedenaPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Words.json" beforeDir="false" afterPath="$PROJECT_DIR$/Words.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/custom/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/custom/Word.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/custom/WordList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/custom/WordList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/guis/AddWordPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/guis/AddWordPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/guis/JLanguagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/guis/JLanguagePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/guis/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/guis/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/src/main/java/com/example/testprograms/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/src/main/java/com/example/testprograms/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/src/main/java/com/example/testprograms/Item.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/src/main/java/com/example/testprograms/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/src/main/java/com/example/testprograms/ddz.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Testing Projects/TestPrograms/src/main/resources/com/example/testprograms/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

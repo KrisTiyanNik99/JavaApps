@@ -15,13 +15,13 @@ public class MainFrame extends JFrame {
 
     public void initComponents() {
 
-        // From here we lower the settings to MainFrame
+        // From here we set all the settings to MainFrame
         setSize(800, 600);
         setLayout(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Language Application");
         setResizable(false);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.BLACK);
 
         // Set buttons and their settings
@@ -60,11 +60,7 @@ public class MainFrame extends JFrame {
         menuBar.add(addWord);
 
         // Set actions to menu items
-        removeActions(addGui);
-        addGui.addActionListener(e -> {
-            dispose();
-            new AddWordPanel(getWidth(), getHeight(), menuBar);
-        });
+        setActionsToMenuItems(menuBar);
 
         // Set menu bar to this scene
         setJMenuBar(menuBar);
@@ -74,6 +70,7 @@ public class MainFrame extends JFrame {
             dispose();
             new JLanguagePanel(getWidth(), getHeight(), menuBar);
         });
+        exit.addActionListener(e -> System.exit(0));
 
         setVisible(true);
     }
@@ -96,5 +93,30 @@ public class MainFrame extends JFrame {
             // Now we remove all actions from our buttons
             item.removeActionListener(listener);
         }
+    }
+
+    // Set actions to out menu bar items
+    private void setActionsToMenuItems(JMenuBar menuBar) {
+
+        // Get first menu item
+        JMenu firstMenu = menuBar.getMenu(0);
+        JMenuItem firstItem = firstMenu.getItem(0);
+
+        // Remove all actions
+        removeActions(firstItem);
+
+        // Set new action
+        firstItem.addActionListener(e -> {
+            dispose();
+            new MainFrame();
+        });
+
+        // Repeat the for second menu item
+        JMenuItem secondItem = menuBar.getMenu(1).getItem(0);
+        removeActions(secondItem);
+        secondItem.addActionListener(e -> {
+            dispose();
+            new AddWordPanel(getWidth(), getHeight(), menuBar);
+        });
     }
 }
