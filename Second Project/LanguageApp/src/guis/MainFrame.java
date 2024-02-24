@@ -24,6 +24,14 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.BLACK);
 
+        // Set main Title in our language app
+        JLabel title = new JLabel("Java Language Application");
+        title.setBounds(10,10,790, 150);
+        title.setFont(new Font("Title", Font.BOLD, 50));
+        title.setForeground(Color.WHITE);
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        add(title);
+
         // Set buttons and their settings
         JButton beginner = new JButton("Start for beginners");
         beginner.setBounds(250, 200, 300, 50);
@@ -48,7 +56,7 @@ public class MainFrame extends JFrame {
         JMenu addWord = new JMenu("Add");
 
         // Add menu items to the menus
-        JMenuItem mainMenu = new JMenuItem("Go to main Menu");
+        JMenuItem mainMenu = new JMenuItem("Main menu");
         JMenuItem addGui = new JMenuItem("Add word");
 
         // Add menu items to the menus

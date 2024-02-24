@@ -1,149 +1,167 @@
-{
-  "words": [
+{"words": [
     {
-      "word": "food",
-      "translate": "храна",
-      "emoji": "🍔"
+        "emoji": "🍔",
+        "word": "food",
+        "translate": "храна"
     },
     {
-      "word": "love",
-      "translate": "любов",
-      "emoji": "❤️"
+        "emoji": "❤️",
+        "word": "love",
+        "translate": "любов"
     },
     {
-      "word": "adventure",
-      "translate": "приключение",
-      "emoji": "🌍"
+        "emoji": "🌍",
+        "word": "adventure",
+        "translate": "приключение"
     },
     {
-      "word": "ethereal",
-      "translate": "ефирен",
-      "emoji": "🌌"
+        "emoji": "🌌",
+        "word": "ethereal",
+        "translate": "ефирен"
     },
     {
-      "word": "epiphany",
-      "translate": "озарение",
-      "emoji": "💡"
+        "emoji": "💡",
+        "word": "epiphany",
+        "translate": "озарение"
     },
     {
-      "word": "equanimity",
-      "translate": "невъзмутимост",
-      "emoji": "😌"
+        "emoji": "😌",
+        "word": "equanimity",
+        "translate": "невъзмутимост"
     },
     {
-      "word": "effervescent",
-      "translate": "искрящ",
-      "emoji": "✨"
+        "emoji": "✨",
+        "word": "effervescent",
+        "translate": "искрящ"
     },
     {
-      "word": "mellifluous",
-      "translate": "сладък",
-      "emoji": "🍯"
+        "emoji": "🍯",
+        "word": "mellifluous",
+        "translate": "сладък"
     },
     {
-      "word": "resilience",
-      "translate": "устойчивост",
-      "emoji": "🌱"
+        "emoji": "🌱",
+        "word": "resilience",
+        "translate": "устойчивост"
     },
     {
-      "word": "serenity",
-      "translate": "спокойствие",
-      "emoji": "🌊"
+        "emoji": "🌊",
+        "word": "serenity",
+        "translate": "спокойствие"
     },
     {
-      "word": "eloquence",
-      "translate": "красноречие",
-      "emoji": "🎙️"
+        "emoji": "🎙️",
+        "word": "eloquence",
+        "translate": "красноречие"
     },
     {
-      "word": "ephemeral",
-      "translate": "ефимерен",
-      "emoji": "🌸"
+        "emoji": "🌸",
+        "word": "ephemeral",
+        "translate": "ефимерен"
     },
     {
-      "word": "effulgent",
-      "translate": "сияен",
-      "emoji": "☀️"
+        "emoji": "☀️",
+        "word": "effulgent",
+        "translate": "сияен"
     },
     {
-      "word": "enthusiasm",
-      "translate": "ентусиазъм",
-      "emoji": "🎉"
+        "emoji": "🎉",
+        "word": "enthusiasm",
+        "translate": "ентусиазъм"
     },
     {
-      "word": "bliss",
-      "translate": "блаженство",
-      "emoji": "😊"
+        "emoji": "😊",
+        "word": "bliss",
+        "translate": "блаженство"
     },
     {
-      "word": "serendipity",
-      "translate": "случайност",
-      "emoji": "🍀"
+        "emoji": "🍀",
+        "word": "serendipity",
+        "translate": "случайност"
     },
     {
-      "word": "luminescent",
-      "translate": "светещ",
-      "emoji": "💡"
+        "emoji": "💡",
+        "word": "luminescent",
+        "translate": "светещ"
     },
     {
-      "word": "efficacious",
-      "translate": "ефикасен",
-      "emoji": "💪"
+        "emoji": "💪",
+        "word": "efficacious",
+        "translate": "ефикасен"
     },
     {
-      "word": "melancholy",
-      "translate": "меланхолия",
-      "emoji": "😢"
+        "emoji": "😢",
+        "word": "melancholy",
+        "translate": "меланхолия"
     },
     {
-      "word": "petrichor",
-      "translate": "миризма на земя след дъжд",
-      "emoji": "🌧️"
+        "emoji": "🌧️",
+        "word": "petrichor",
+        "translate": "миризма на земя след дъжд"
     },
     {
-      "word": "wave",
-      "translate": "вълна",
-      "emoji": "🌊"
+        "emoji": "🌊",
+        "word": "wave",
+        "translate": "вълна"
     },
     {
-      "word": "sophisticated",
-      "translate": "изискан",
-      "emoji": "🍴"
+        "emoji": "🍴",
+        "word": "sophisticated",
+        "translate": "изискан"
     },
     {
-      "word": "resplendent",
-      "translate": "блестящ",
-      "emoji": "✨"
+        "emoji": "✨",
+        "word": "resplendent",
+        "translate": "блестящ"
     },
     {
-      "word": "iridescent",
-      "translate": "преливащ се",
-      "emoji": "🌈"
+        "emoji": "🌈",
+        "word": "iridescent",
+        "translate": "преливащ се"
     },
     {
-      "word": "ameliorate",
-      "translate": "подобрявам",
-      "emoji": "🔄"
+        "emoji": "🔄",
+        "word": "ameliorate",
+        "translate": "подобрявам"
     },
     {
-      "word": "euphoria",
-      "translate": "еуфория",
-      "emoji": "🎆"
+        "emoji": "🎆",
+        "word": "euphoria",
+        "translate": "еуфория"
     },
     {
-      "word": "magnanimous",
-      "translate": "великодушен",
-      "emoji": "👑"
+        "emoji": "👑",
+        "word": "magnanimous",
+        "translate": "великодушен"
     },
     {
-      "word": "surreptitious",
-      "translate": "таен",
-      "emoji": "🕵️"
+        "emoji": "🕵️",
+        "word": "surreptitious",
+        "translate": "таен"
     },
     {
-      "word": "illuminate",
-      "translate": "озарявам",
-      "emoji": "💡"
+        "emoji": "💡",
+        "word": "illuminate",
+        "translate": "озарявам"
+    },
+    {
+        "emoji": "🐕",
+        "word": "dog",
+        "translate": "куче"
+    },
+    {
+        "emoji": "🐈",
+        "word": "cat ",
+        "translate": "котка"
+    },
+    {
+        "emoji": "🐿",
+        "word": "squirrel",
+        "translate": "катерица"
+    },
+    {
+        "emoji": "🐍",
+        "word": "snake",
+        "translate": "змия"
     }
-  ]
-}
+]}
