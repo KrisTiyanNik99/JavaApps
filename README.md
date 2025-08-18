@@ -19,7 +19,7 @@ Within this directory, you'll find a collection of tasks assigned to me by SoftU
 
 Test Project 2:
 
-The purpose of this directory is to experiment and test various concepts before implementing them in real projects. It serves as a sandbox environment where I can explore different approaches and ensure their effectiveness before integrating them into larger-scale applications.
+The purpose of this directory is to experiment and primitive test various concepts before implementing them in real projects. It serves as a sandbox environment where I can explore different approaches and ensure their effectiveness before integrating them into larger-scale applications.
 
 ## Future Plans
 I intend to continue expanding this repository by adding more Java applications that demonstrate my proficiency in software development. These applications will cover a wide range of functionalities, showcasing my versatility and adaptability as a developer.
